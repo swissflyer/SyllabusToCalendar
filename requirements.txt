@@ -1,1 +1,5 @@
+google
+googleapiclient
+httplib2
+google-api-python-client
 flask==1.1.1
