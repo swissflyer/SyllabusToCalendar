@@ -12,14 +12,16 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_folder="templates/static", template_folder="templates")
+
 
 @app.route('/')
 def index():
-    return ('Hello Word!')
+    return (render_template('index.html'))
 
 
-@app.route('/api/syllabus', methods=['POST'])
+@app.route('/api/syllabus', methods=['POST', 'GET'])
 def syllabus():
     picture = request.body
     detect_text(picture)
