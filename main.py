@@ -1,13 +1,13 @@
 from flask import Flask, escape, request, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="templates/static", template_folder="templates")
 
 @app.route('/')
 def index():
-    return ('Hello Word!')
+    return (render_template('index.html'))
 
 
-@app.route('/api/syllabus', methods=['POST'])
+@app.route('/api/syllabus', methods=['POST', 'GET'])
 def syllabus():
     syllabusInput = request.get_json()
 
